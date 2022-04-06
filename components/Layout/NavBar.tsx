@@ -1,23 +1,17 @@
 import Link from "next/link";
 import React, { useEffect } from "react";
 import useSWR, { Fetcher } from "swr";
-import { Categories } from "../../types/categoires";
+import { Category } from "../../src/generated/graphql";
 
-const fetcher: Fetcher<Categories, string> = async (url: string) => {
+const fetcher: Fetcher<{ categories: Category[] }, string> = async (
+  url: string
+) => {
   const res = await fetch(url);
   return res.json();
 };
 
 const NavBar = () => {
   const { data, error } = useSWR("/api/nav-items", fetcher);
-
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
-
-  const displayLinks = () => {
-    return data;
-  };
 
   return (
     <div>
@@ -28,7 +22,7 @@ const NavBar = () => {
             return (
               <div key={cat.slug}>
                 <li>
-                  <Link href={cat.slug}>
+                  <Link href={cat?.slug ?? ""}>
                     <a>{cat.name}</a>
                   </Link>
                 </li>

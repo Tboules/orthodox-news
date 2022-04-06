@@ -3,11 +3,10 @@ import React from "react";
 import client from "../../apollo-client";
 import { Categories } from "../../types/categoires";
 
-import CATEGORY_ARTILCES from "../../queries/categoryArtciles.graphql";
+import CATEGORY_ARTICLES from "../../queries/categoryArticles.graphql";
 import NAV_QUERY from "../../queries/navQuery.graphql";
 
 const Categories = (props: any) => {
-  console.log(props);
   return <div>Hello Category</div>;
 };
 
@@ -15,7 +14,7 @@ export default Categories;
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { data } = await client.query({
-    query: CATEGORY_ARTILCES,
+    query: CATEGORY_ARTICLES,
     variables: {
       slug: params?.categories,
     },
