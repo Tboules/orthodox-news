@@ -5,9 +5,7 @@ import NavBar from "./NavBar";
 const Layout: React.FC = ({ children }) => {
   return (
     <>
-      <ClientOnly>
-        <NavBar />
-      </ClientOnly>
+      <NavBar />
       <main>{children}</main>
     </>
   );

@@ -1,14 +1,54 @@
-import React from "react";
-import useSWR from "swr";
+import Link from "next/link";
+import React, { useEffect } from "react";
+import useSWR, { Fetcher } from "swr";
+import { Categories } from "../../types/categoires";
 
-const fetcher = (url: string) => fetch(url).then((res) => res.json());
+const fetcher: Fetcher<Categories, string> = async (url: string) => {
+  const res = await fetch(url);
+  return res.json();
+};
 
 const NavBar = () => {
   const { data, error } = useSWR("/api/nav-items", fetcher);
 
-  if (!data) return null;
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
 
-  return <div>Nav Bar </div>;
+  const displayLinks = () => {
+    return data;
+  };
+
+  return (
+    <div>
+      <h1>Nav Bar</h1>
+      <ul>
+        {data != null &&
+          data.categories.map((cat) => {
+            return (
+              <div key={cat.slug}>
+                <li>
+                  <Link href={cat.slug}>
+                    <a>{cat.name}</a>
+                  </Link>
+                </li>
+                {cat.subCategories && (
+                  <ul>
+                    {cat.subCategories.map((subCat) => (
+                      <li key={subCat.slug}>
+                        <Link href={`${cat.slug}/${subCat.slug}`}>
+                          <a>{subCat.name}</a>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            );
+          })}
+      </ul>
+    </div>
+  );
 };
 
 export default NavBar;
