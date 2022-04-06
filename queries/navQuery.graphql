@@ -1,0 +1,12 @@
+query NavQuery {
+  categories {
+    slug
+    name
+    arabicDisplay
+    subCategories {
+      name
+      slug
+      arabicDisplay
+    }
+  }
+}

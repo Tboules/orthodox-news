@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import client from "../../apollo-client";
-import { navQuery } from "../../queries/navQuery";
+import NAV_QUERY from "../../queries/navQuery.graphql";
 import { Categories } from "../../types/categoires";
 
 export default async function handler(
@@ -8,7 +8,7 @@ export default async function handler(
   res: NextApiResponse<Categories>
 ) {
   const { data }: { data: Categories } = await client.query({
-    query: navQuery,
+    query: NAV_QUERY,
   });
 
   res.status(200).send(data);
