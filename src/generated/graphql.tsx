@@ -50,7 +50,7 @@ export type Article = Node & {
   /** User that last published this document */
   publishedBy?: Maybe<User>;
   scheduledIn: Array<ScheduledOperation>;
-  slug?: Maybe<Scalars['String']>;
+  slug: Scalars['String'];
   /** System stage field */
   stage: Stage;
   title?: Maybe<Scalars['String']>;
@@ -214,7 +214,7 @@ export type ArticleCreateInput = {
   articleBody?: InputMaybe<Scalars['RichTextAST']>;
   category?: InputMaybe<ArticleCatCreateOneInlineInput>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
-  slug?: InputMaybe<Scalars['String']>;
+  slug: Scalars['String'];
   title?: InputMaybe<Scalars['String']>;
   updatedAt?: InputMaybe<Scalars['DateTime']>;
 };
@@ -1229,7 +1229,7 @@ export type Category = Node & {
   /** User that last published this document */
   publishedBy?: Maybe<User>;
   scheduledIn: Array<ScheduledOperation>;
-  slug?: Maybe<Scalars['String']>;
+  slug: Scalars['String'];
   /** System stage field */
   stage: Stage;
   subCategories: Array<SubCategory>;
@@ -1332,7 +1332,7 @@ export type CategoryCreateInput = {
   articles?: InputMaybe<ArticleCreateManyInlineInput>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
   name: Scalars['String'];
-  slug?: InputMaybe<Scalars['String']>;
+  slug: Scalars['String'];
   subCategories?: InputMaybe<SubCategoryCreateManyInlineInput>;
   updatedAt?: InputMaybe<Scalars['DateTime']>;
 };
@@ -3982,7 +3982,7 @@ export type SubCategory = Node & {
   /** User that last published this document */
   publishedBy?: Maybe<User>;
   scheduledIn: Array<ScheduledOperation>;
-  slug?: Maybe<Scalars['String']>;
+  slug: Scalars['String'];
   /** System stage field */
   stage: Stage;
   /** The time the document was updated */
@@ -4070,7 +4070,7 @@ export type SubCategoryCreateInput = {
   createdAt?: InputMaybe<Scalars['DateTime']>;
   name?: InputMaybe<Scalars['String']>;
   parent_category?: InputMaybe<CategoryCreateOneInlineInput>;
-  slug?: InputMaybe<Scalars['String']>;
+  slug: Scalars['String'];
   updatedAt?: InputMaybe<Scalars['DateTime']>;
 };
 

@@ -1,6 +1,8 @@
 query CategoryArticles($slug: String) {
   category(where: { slug: $slug }) {
     slug
+    name
+    arabicDisplay
     articles {
       id
       slug

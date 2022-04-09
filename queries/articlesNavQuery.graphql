@@ -1,0 +1,16 @@
+query AllArtciles {
+  articles {
+    slug
+    category {
+      ... on Category {
+        slug
+      }
+      ... on SubCategory {
+        slug
+        parent_category {
+          slug
+        }
+      }
+    }
+  }
+}

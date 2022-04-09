@@ -22,7 +22,7 @@ const NavBar = () => {
             return (
               <div key={cat.slug}>
                 <li>
-                  <Link href={cat?.slug ?? ""}>
+                  <Link href="/[category]" as={`/${cat.slug}`}>
                     <a>{cat.name}</a>
                   </Link>
                 </li>
@@ -30,7 +30,10 @@ const NavBar = () => {
                   <ul>
                     {cat.subCategories.map((subCat) => (
                       <li key={subCat.slug}>
-                        <Link href={`${cat.slug}/${subCat.slug}`}>
+                        <Link
+                          href="/[category]/[subCategory]"
+                          as={`/${cat.slug}/${subCat.slug}`}
+                        >
                           <a>{subCat.name}</a>
                         </Link>
                       </li>

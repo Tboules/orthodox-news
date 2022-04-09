@@ -1,0 +1,10 @@
+query SubCategoriesNavQuery {
+  subCategories {
+    slug
+    name
+    arabicDisplay
+    parent_category {
+      slug
+    }
+  }
+}
