@@ -1,4 +1,5 @@
 import { GetStaticPaths, GetStaticProps } from "next";
+import Image from "next/image";
 import React from "react";
 import client from "../../../apollo-client";
 import { Article } from "../../../src/generated/graphql";
@@ -16,7 +17,31 @@ const HighLevelArticle: React.FC<Props> = ({ article }) => {
 
   return (
     <div dir={isEnglishArticle ? "ltr" : "rtl"}>
-      <RichText content={article.articleBody?.raw.children} />
+      <RichText
+        content={article.articleBody?.raw.children}
+        renderers={{
+          img: ({ src, altText, height, width }) => (
+            <div
+              style={{
+                width: "100%",
+                margin: "auto",
+                padding: "0 2rem",
+                maxWidth: "800px",
+              }}
+            >
+              <Image
+                src={src ?? ""}
+                alt={altText}
+                height={height}
+                width={width}
+                objectFit="cover"
+                layout="responsive"
+                loader={() => src ?? ""}
+              />
+            </div>
+          ),
+        }}
+      />
     </div>
   );
 };
