@@ -1,6 +1,10 @@
-query AllArtciles {
+query allArticles {
   articles {
     slug
+    articleBody {
+      html
+    }
+    title
     category {
       ... on Category {
         slug
