@@ -1,13 +1,34 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 import React from "react";
 import client from "../../../apollo-client";
-import { SubCategory } from "../../../src/generated/graphql";
+import { Category, SubCategory } from "../../../src/generated/graphql";
 import SUB_CAT_NAV_QUERY from "../../../queries/subCategoriesNavQuery.graphql";
 import SUB_CAT_ARTICLE from "../../../queries/subCategoryArticle.graphql";
+import Link from "next/link";
 
-const SubCategory = (props: any) => {
-  console.log(props);
-  return <div>SubCategory</div>;
+type Props = {
+  subCategory: SubCategory;
+};
+
+const SubCategory: React.FC<Props> = ({ subCategory }) => {
+  return (
+    <div style={{ padding: "1rem" }}>
+      <h1>SubCategory: {subCategory.name}</h1>
+      <p>Article Count {subCategory.articles.length}</p>
+      <ul>
+        {subCategory.articles.map((article) => (
+          <li key={article.slug}>
+            <Link
+              href="/[category]/[subCategory]/[article]"
+              as={`/${subCategory.parent_category?.slug}/${subCategory.slug}/${article.slug}`}
+            >
+              <a>{article.title}</a>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 };
 
 export default SubCategory;
@@ -19,8 +40,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       slug: params?.subCategory,
     },
   });
-
-  console.log(data);
 
   return {
     props: {

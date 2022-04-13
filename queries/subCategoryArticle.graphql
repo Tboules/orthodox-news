@@ -3,6 +3,9 @@ query SubCategoryArticles($slug: String) {
     slug
     name
     arabicDisplay
+    parent_category {
+      slug
+    }
     articles {
       slug
       title

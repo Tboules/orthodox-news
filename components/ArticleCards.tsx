@@ -13,7 +13,10 @@ const ArticleCards: React.FC<Props> = ({ articles, parentSlug }) => {
       <ul>
         {articles.map((article) => (
           <li key={article.slug}>
-            <Link href={`/${parentSlug}/${article.slug}`}>
+            <Link
+              href="/[category]/[subCategory]/[article]"
+              as={`/${parentSlug}/general/${article.slug}`}
+            >
               <a>{article.title}</a>
             </Link>
           </li>

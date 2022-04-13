@@ -17,7 +17,7 @@ const Category: React.FC<Props> = ({ category }) => {
 
   category.articles;
   return (
-    <div>
+    <div style={{ padding: "1rem" }}>
       <h1>{category.name}</h1>
       <h1>{category.arabicDisplay}</h1>
       {hasSubcategories ? (
