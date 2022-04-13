@@ -4,14 +4,21 @@ import client from "../../../apollo-client";
 import { Article } from "../../../src/generated/graphql";
 import ALL_ARTICLES_QUERY from "../../../queries/allArticles.graphql";
 import SINGLE_ARTICLE from "../../../queries/singleArticle.graphql";
+import { RichText } from "@graphcms/rich-text-react-renderer";
 
 type Props = {
   article: Article;
 };
 
 const HighLevelArticle: React.FC<Props> = ({ article }) => {
-  console.log(article);
-  return <div>HighLevelArticle</div>;
+  //@ts-expect-error
+  const isEnglishArticle = article.category?.parent_category?.slug == "english";
+
+  return (
+    <div dir={isEnglishArticle ? "ltr" : "rtl"}>
+      <RichText content={article.articleBody?.raw.children} />
+    </div>
+  );
 };
 
 export default HighLevelArticle;

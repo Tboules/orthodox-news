@@ -61,6 +61,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
         subCategory: sc.slug,
       },
     })),
-    fallback: true,
+    fallback: false,
   };
 };

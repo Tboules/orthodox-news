@@ -2,8 +2,19 @@ query SingleArticle($slug: String) {
   article(where: { slug: $slug }) {
     slug
     title
+    category {
+      ... on Category {
+        slug
+      }
+      ... on SubCategory {
+        slug
+        parent_category {
+          slug
+        }
+      }
+    }
     articleBody {
-      html
+      raw
     }
   }
 }

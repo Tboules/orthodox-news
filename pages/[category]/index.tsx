@@ -15,7 +15,6 @@ type Props = {
 const Category: React.FC<Props> = ({ category }) => {
   const hasSubcategories = category.subCategories.length != 0;
 
-  category.articles;
   return (
     <div style={{ padding: "1rem" }}>
       <h1>{category.name}</h1>
