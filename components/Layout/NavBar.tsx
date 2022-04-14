@@ -43,6 +43,11 @@ const NavBar = () => {
               </div>
             );
           })}
+        <li>
+          <Link href="/issues">
+            <a>Issues</a>
+          </Link>
+        </li>
       </ul>
     </div>
   );
