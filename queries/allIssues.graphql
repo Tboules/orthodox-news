@@ -1,0 +1,8 @@
+query AllIssues {
+  issues {
+    issueFile {
+      url
+    }
+    publicationDate
+  }
+}

@@ -1,4 +1,4 @@
-query allArticles {
+query AllArticles {
   articles {
     slug
     articleBody {
