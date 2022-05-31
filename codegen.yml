@@ -1,5 +1,5 @@
 overwrite: true
-schema: ""
+schema: ${GRAPH_CMS_CONTENT_API_URL}
 documents: null
 generates:
   src/generated/graphql.tsx:
