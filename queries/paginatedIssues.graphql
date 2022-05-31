@@ -1,0 +1,9 @@
+query PaginatedIssues($skip: Int, $first: Int) {
+  issues(orderBy: publicationDate_DESC, skip: $skip, first: $first) {
+    issueFile {
+      url
+    }
+    publicationDate
+    issueNumber
+  }
+}
