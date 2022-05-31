@@ -6,4 +6,9 @@ query PaginatedIssues($skip: Int, $first: Int) {
     publicationDate
     issueNumber
   }
+  issuesConnection {
+    aggregate {
+      count
+    }
+  }
 }
